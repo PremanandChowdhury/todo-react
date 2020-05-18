@@ -36,30 +36,36 @@ export default class App extends Component {
     const updatedItems = [...this.state.items, newItem];
 
     // set the state of the props
-    this.setState(
-      {
-        items: updatedItems,
-        item: "",
-        id: uuidv4(),
-        editItem: false,
-      },
-      () => console.log(this.state)
-    );
+    this.setState({
+      items: updatedItems,
+      item: "",
+      id: uuidv4(),
+      editItem: false,
+    });
   };
 
   // clear button state changes
   clearList = () => {
-    console.log("clear list");
+    // reset the items to initial empty state
+    this.setState({
+      items: [],
+    });
   };
 
   // delete icon state changes
   onDelete = (id) => {
-    console.log(`delete ${id}`);
+    // delete a particular item of the list
+    const filteredItem = this.state.items.filter((item) => item.id !== id);
+
+    // set the state of the items list after deletion
+    this.setState({
+      items: filteredItem,
+    });
   };
 
   // edit icon state changes
   onEdit = (id) => {
-    console.log(`edit ${id}`);
+    console.log("edited item");
   };
 
   render() {
