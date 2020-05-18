@@ -1,0 +1,16 @@
+{
+  "editor.fontSize": 18,
+  "editor.fontWeight": "200",
+  "workbench.colorTheme": "Cyberpunk",
+  "workbench.preferredDarkColorTheme": "Monokai",
+  "workbench.iconTheme": "material-icon-theme",
+  "screencastMode.onlyKeyboardShortcuts": true,
+  "terminal.integrated.cursorWidth": 2,
+  "terminal.integrated.enableBell": true,
+  "terminal.integrated.fontSize": 15,
+  "terminal.integrated.letterSpacing": 1,
+  "remote.downloadExtensionsLocally": true,
+  "timeline.pageSize": 0,
+  "autoprefixer.formatOnSave": true,
+  "autoprefixer.options": {}
+}
