@@ -5,7 +5,8 @@ export default class TodoList extends Component {
   render() {
     return (
       <div>
-        <h2>Todo list</h2>
+        <h1>Todo list</h1>
+        <Item />
       </div>
     );
   }

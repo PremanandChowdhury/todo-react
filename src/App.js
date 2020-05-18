@@ -1,30 +1,50 @@
 import React, { Component } from "react";
-import uuid from "uuid";
+import { v4 as uuidv4 } from "uuid";
 import "bootstrap/dist/css/bootstrap.min.css";
-import TodoList from "./components/TodoList";
 import TodoInput from "./components/TodoInput";
+import TodoList from "./components/TodoList";
 
 export default class App extends Component {
   // STATE
   state = {
-    items: [
-      { id: 1, title: "wake up " },
-      { id: 2, title: "breakfast" },
-    ],
-    id: uuid,
+    items: [],
+    id: uuidv4(),
     item: "",
     editItem: false,
   };
 
-  // HELPER METHODS
+  // HELPER METHODS:
+
   // input change state actions
   onChange = (e) => {
-    console.log("change");
+    this.setState({
+      item: e.target.value,
+    });
   };
 
   // submit button state changes
   onSubmit = (e) => {
-    console.log("submit");
+    // prevents the default loading of the page
+    e.preventDefault();
+
+    // update the id:uuid and the title:item
+    const newItem = {
+      id: this.state.id,
+      title: this.state.item,
+    };
+
+    const updatedItems = [...this.state.items, newItem];
+
+    // set the state of the props
+    this.setState(
+      {
+        items: updatedItems,
+        item: "",
+        id: uuidv4(),
+        editItem: false,
+      },
+      () => console.log(this.state)
+    );
   };
 
   // clear button state changes
