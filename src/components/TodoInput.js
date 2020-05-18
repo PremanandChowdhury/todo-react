@@ -20,11 +20,20 @@ export default class TodoInput extends Component {
               value={item}
               onChange={onChange}
             />
+
+            {/* change the color fo the button from primary to success when edit icon is clicked */}
+
             <button
               type="submit"
-              className="btn btn-block btn-primary mt-4 text-uppercase"
+              // disabled to true for preventing user from adding empty item
+              disabled={item ? false : true}
+              className={
+                editItem
+                  ? "btn btn-block btn-success mt-4 text-uppercase"
+                  : "btn btn-block btn-primary mt-4 text-uppercase"
+              }
             >
-              include
+              {editItem ? "edit Item" : "include item"}
             </button>
           </div>
         </form>

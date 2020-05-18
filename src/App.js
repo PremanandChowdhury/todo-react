@@ -16,6 +16,8 @@ export default class App extends Component {
   // HELPER METHODS:
 
   // input change state actions
+  // 1. on click event occurs, fetch the event value and set the item
+
   onChange = (e) => {
     this.setState({
       item: e.target.value,
@@ -23,6 +25,11 @@ export default class App extends Component {
   };
 
   // submit button state changes
+  // 1. control the loading of the page.
+  // 2. update the id and the title of the new item
+  // 3. update the items list
+  // 4. set the update to the initial state of the props.
+
   onSubmit = (e) => {
     // prevents the default loading of the page
     e.preventDefault();
@@ -36,6 +43,7 @@ export default class App extends Component {
     const updatedItems = [...this.state.items, newItem];
 
     // set the state of the props
+
     this.setState({
       items: updatedItems,
       item: "",
@@ -45,6 +53,8 @@ export default class App extends Component {
   };
 
   // clear button state changes
+  // 1. reset the list when clearlist is clicked
+
   clearList = () => {
     // reset the items to initial empty state
     this.setState({
@@ -53,6 +63,9 @@ export default class App extends Component {
   };
 
   // delete icon state changes
+  // 1. filter out the item from the list
+  // 2. update the items list
+
   onDelete = (id) => {
     // delete a particular item of the list
     const filteredItem = this.state.items.filter((item) => item.id !== id);
@@ -64,8 +77,24 @@ export default class App extends Component {
   };
 
   // edit icon state changes
+  // 1. delete item from list
+  // 2. store the deleted item
+  // 3. update the item to the input form for modification
+
   onEdit = (id) => {
-    console.log("edited item");
+    // delete a particular item of the list
+    const filteredItem = this.state.items.filter((item) => item.id !== id);
+
+    // fetch the selected item
+    const selectedItem = this.state.items.find((item) => item.id === id);
+
+    // setting the item to be edited
+    this.setState({
+      items: filteredItem,
+      item: selectedItem.title,
+      id: id,
+      editItem: true,
+    });
   };
 
   render() {
